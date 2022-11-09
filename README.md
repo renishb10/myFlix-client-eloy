@@ -8,5 +8,6 @@ https://github.com/eloycotoalfonso/movie_api
 ## Dependencies
 
 - Parcel
+  This will bundle, minified, transpile and create the distribution files for the project. To create it type "path src/index.html" in the terminal in the project folder.
 - react
 - React-dom
