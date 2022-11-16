@@ -20,9 +20,9 @@ export function RegistrationView (props) {
             <Row>
                 <Col>
                     <CardGroup>
-                        <Card>
+                        <Card style = {{marginTop: 100, marginBottom: 50, width: '100px'}}>
                             <Card.Body>
-                                <Card.Title>Registration: </Card.Title>
+                                <Card.Title style ={{textAlign: 'center', fontSize: '2rem'}}>Registration: </Card.Title>
                                 <Form>
                                     <Form.Group>
                                         <Form.Label> Username: </Form.Label>
@@ -34,7 +34,7 @@ export function RegistrationView (props) {
                                             placeholder = "Enter a username here"
                                             />
                                     </Form.Group>
-                                    <Form.Group>
+                                    <Form.Group style = {{marginTop: '10px'}}>
                                         Password:
                                         <Form.Control
                                             type = "password"
@@ -45,7 +45,7 @@ export function RegistrationView (props) {
                                             placeholder = "Enter your passoword"
                                         />
                                     </Form.Group>
-                                    <Form.Group>
+                                    <Form.Group style = {{marginTop: '10px'}}>
                                         <Form.Control
                                             type = "password"
                                             value = {password}
@@ -55,7 +55,7 @@ export function RegistrationView (props) {
                                             placeholder = "Repeat your passoword"
                                         />
                                     </Form.Group>
-                                    <Form.Group>
+                                    <Form.Group style = {{marginTop: '10px'}}>
                                         <Form.Label>Email: </Form.Label>
                                         <Form.Control
                                             type = "text"
@@ -64,7 +64,7 @@ export function RegistrationView (props) {
                                             required
                                         />
                                     </Form.Group>
-                                    <Form.Group>
+                                    <Form.Group style = {{marginTop: '10px'}}>
                                         <Form.Label>Birth Date</Form.Label>
                                         <Form.Control
                                             type = "date"
@@ -72,7 +72,7 @@ export function RegistrationView (props) {
                                             onChange = {e => setBirth(e.target.value)}
                                         />
                                     </Form.Group>
-                                    <Button variant = "primary" type = "submit" onClick = {handleSubmit}> Register now</Button>
+                                    <Button style = {{marginTop: '10px'}} variant = "primary" type = "submit" onClick = {handleSubmit}> Register now</Button>
                                 </Form>
                             
                             </Card.Body>

@@ -25476,6 +25476,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }));
+        // if(!user) return <RegistrationView onRegistration = {user => this.onRegistrated(user)}/>;
         /*//If newUser == 1 
         if(newUser) return <RegistrationView onRegistration = {user => this.onRegistrated(user)} />
         */ //If there is user, we retunn a different view depending on if movies have been loaded or if a movie is selected
@@ -25483,7 +25484,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main_view/main_view.jsx",
-                lineNumber: 74
+                lineNumber: 75
             },
             __self: this
         }));
@@ -25491,21 +25492,21 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main_view/main_view.jsx",
-                lineNumber: 78
+                lineNumber: 79
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
                 className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/main_view/main_view.jsx",
-                    lineNumber: 81
+                    lineNumber: 82
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                     md: 8,
                     __source: {
                         fileName: "src/components/main_view/main_view.jsx",
-                        lineNumber: 82
+                        lineNumber: 83
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25515,7 +25516,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main_view/main_view.jsx",
-                            lineNumber: 83
+                            lineNumber: 84
                         },
                         __self: this
                     })
@@ -25524,14 +25525,14 @@ class MainView extends _reactDefault.default.Component {
                 className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/main_view/main_view.jsx",
-                    lineNumber: 88
+                    lineNumber: 89
                 },
                 __self: this,
                 children: movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                         md: 3,
                         __source: {
                             fileName: "src/components/main_view/main_view.jsx",
-                            lineNumber: 90
+                            lineNumber: 91
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25541,7 +25542,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main_view/main_view.jsx",
-                                lineNumber: 91
+                                lineNumber: 92
                             },
                             __self: this
                         }, movie._id)
@@ -25626,7 +25627,7 @@ class MovieCard extends _reactDefault.default.Component {
                             __self: this,
                             children: [
                                 " ",
-                                moviedData.Description,
+                                movieData.Description,
                                 " "
                             ]
                         }),
@@ -25634,7 +25635,7 @@ class MovieCard extends _reactDefault.default.Component {
                             onClick: ()=>{
                                 onMovieClick(movieData);
                             },
-                            Variant: "link",
+                            variant: "primary",
                             __source: {
                                 fileName: "src/components/movie_card/movie_card.jsx",
                                 lineNumber: 16
@@ -25649,7 +25650,7 @@ class MovieCard extends _reactDefault.default.Component {
     }
 }
 MovieCard.propTypes = {
-    movie: _propTypesDefault.default.shape({
+    movieData: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired
@@ -43118,6 +43119,11 @@ function RegistrationView(props) {
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
+                        style: {
+                            marginTop: 100,
+                            marginBottom: 50,
+                            width: '100px'
+                        },
                         __source: {
                             fileName: "src/components/registration_view/registration_view.jsx",
                             lineNumber: 23
@@ -43131,6 +43137,10 @@ function RegistrationView(props) {
                             __self: this,
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
+                                    style: {
+                                        textAlign: 'center',
+                                        fontSize: '2rem'
+                                    },
                                     __source: {
                                         fileName: "src/components/registration_view/registration_view.jsx",
                                         lineNumber: 25
@@ -43176,6 +43186,9 @@ function RegistrationView(props) {
                                             ]
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                            style: {
+                                                marginTop: '10px'
+                                            },
                                             __source: {
                                                 fileName: "src/components/registration_view/registration_view.jsx",
                                                 lineNumber: 37
@@ -43200,6 +43213,9 @@ function RegistrationView(props) {
                                             ]
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Group, {
+                                            style: {
+                                                marginTop: '10px'
+                                            },
                                             __source: {
                                                 fileName: "src/components/registration_view/registration_view.jsx",
                                                 lineNumber: 48
@@ -43221,6 +43237,9 @@ function RegistrationView(props) {
                                             })
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                            style: {
+                                                marginTop: '10px'
+                                            },
                                             __source: {
                                                 fileName: "src/components/registration_view/registration_view.jsx",
                                                 lineNumber: 58
@@ -43250,6 +43269,9 @@ function RegistrationView(props) {
                                             ]
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                            style: {
+                                                marginTop: '10px'
+                                            },
                                             __source: {
                                                 fileName: "src/components/registration_view/registration_view.jsx",
                                                 lineNumber: 67
@@ -43278,6 +43300,9 @@ function RegistrationView(props) {
                                             ]
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                            style: {
+                                                marginTop: '10px'
+                                            },
                                             variant: "primary",
                                             type: "submit",
                                             onClick: handleSubmit,
