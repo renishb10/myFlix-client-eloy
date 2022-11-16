@@ -1,5 +1,8 @@
-$color: steelblue;
+$background_color: black;
+$letters_color: white;
+$secondary_color: #424242;
+$Tertiary_color: red;
 
-.my-flix {
-    color: $color;
+.root {
+    background-color: $background_color;
 }

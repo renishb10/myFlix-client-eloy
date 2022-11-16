@@ -1,1 +1,1 @@
-{"mappings":"AAEA;EACI,OAHI","sources":["src/index.scss"],"sourcesContent":["$color: steelblue;\r\n\r\n.my-flix {\r\n    color: $color;\r\n}"],"names":[],"version":3,"file":"index.caa67093.css.map","sourceRoot":"/__parcel_source_root/"}
+{"mappings":"AAKA;EACI,kBANe","sources":["src/index.scss"],"sourcesContent":["$background_color: black;\r\n$letters_color: white;\r\n$secondary_color: #424242;\r\n$Tertiary_color: red;\r\n\r\n.root {\r\n    background-color: $background_color;\r\n}"],"names":[],"version":3,"file":"index.caa67093.css.map","sourceRoot":"/__parcel_source_root/"}
