@@ -7,6 +7,7 @@ import { RegistrationView } from '../registration_view/registration_view';
 import { MovieCard } from '../movie_card/movie_card';
 import { MovieView } from '../movie_view/movie_view';
 
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'; 
 import Col from 'react-bootstrap/Col';
 											
@@ -76,11 +77,11 @@ export class MainView extends React.Component {
         }
         
         return (
-            <div className = "main-view">
+            <Container className = "main-view">
                 { selectedMovie
                     ? (
                         <Row className = "justify-content-md-center">
-                            <Col md = {8}>
+                            <Col  md = {8}>
                                 <MovieView movieData = {selectedMovie} onBackClick = {newSelectedMovie =>{ this.setSelectedMovie(newSelectedMovie);}}/>
                             </Col>
                         </Row>
@@ -95,7 +96,7 @@ export class MainView extends React.Component {
                         </Row>
                     )
                 }        
-            </div>        
+            </Container>        
         );
     }
 }

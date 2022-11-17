@@ -25422,6 +25422,8 @@ var _loginView = require("../login_view/login_view");
 var _registrationView = require("../registration_view/registration_view");
 var _movieCard = require("../movie_card/movie_card");
 var _movieView = require("../movie_view/movie_view");
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
 var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
@@ -25472,7 +25474,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/main_view/main_view.jsx",
-                lineNumber: 66
+                lineNumber: 67
             },
             __self: this
         }));
@@ -25484,29 +25486,29 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main_view/main_view.jsx",
-                lineNumber: 75
+                lineNumber: 76
             },
             __self: this
         }));
-        return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+        return(/*#__PURE__*/ _jsxRuntime.jsx(_containerDefault.default, {
             className: "main-view",
             __source: {
                 fileName: "src/components/main_view/main_view.jsx",
-                lineNumber: 79
+                lineNumber: 80
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
                 className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/main_view/main_view.jsx",
-                    lineNumber: 82
+                    lineNumber: 83
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                     md: 8,
                     __source: {
                         fileName: "src/components/main_view/main_view.jsx",
-                        lineNumber: 83
+                        lineNumber: 84
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25516,7 +25518,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main_view/main_view.jsx",
-                            lineNumber: 84
+                            lineNumber: 85
                         },
                         __self: this
                     })
@@ -25525,14 +25527,14 @@ class MainView extends _reactDefault.default.Component {
                 className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/main_view/main_view.jsx",
-                    lineNumber: 89
+                    lineNumber: 90
                 },
                 __self: this,
                 children: movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                         md: 3,
                         __source: {
                             fileName: "src/components/main_view/main_view.jsx",
-                            lineNumber: 91
+                            lineNumber: 92
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25542,7 +25544,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main_view/main_view.jsx",
-                                lineNumber: 92
+                                lineNumber: 93
                             },
                             __self: this
                         }, movie._id)
@@ -25558,7 +25560,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie_card/movie_card":"iYZeZ","@parcel/transformer-js/src/esmodule-helpers.js":"8eiVY","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1Cc33","../movie_view/movie_view":"ZtAoJ","axios":"iYoWk","../login_view/login_view":"jWBX5","../registration_view/registration_view":"bsGJV","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0"}],"iYZeZ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie_card/movie_card":"iYZeZ","@parcel/transformer-js/src/esmodule-helpers.js":"8eiVY","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1Cc33","../movie_view/movie_view":"ZtAoJ","axios":"iYoWk","../login_view/login_view":"jWBX5","../registration_view/registration_view":"bsGJV","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","react-bootstrap/Container":"2PRIq"}],"iYZeZ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$015c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
