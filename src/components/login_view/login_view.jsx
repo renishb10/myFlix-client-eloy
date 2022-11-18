@@ -22,11 +22,10 @@ export function LoginView (props){
         props.onLoggedIn(username)
     };
 
-    const notRegister = (e) =>{
-        e.preventDefault();
-        props.onRegistration(1);
-
+    onRegistration = (e) => {
+        props.onRegistration(e)
     }
+    
 
     /*onRegistrated(username){
         this.setState({
@@ -66,7 +65,7 @@ export function LoginView (props){
                                     </Form.Group>
                                     <Button style ={{marginTop: '10px'}} variant = "primary" type = "submit" onClick = {handleSubmit}> Submit </Button>
                                     
-                                    <a href = "" onClick = {notRegister}> Not registered yet?</a>
+                                    <a href = "" onClick = {onRegistration}> Not registered yet?</a>
                                 </Form>
                             </Card.Body>
                         </Card>

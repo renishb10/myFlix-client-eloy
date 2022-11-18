@@ -6,13 +6,14 @@ export function RegistrationView (props) {
     
     const [newUsername, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState ('');
     const [email, setEmail] = useState('');
     const [birth, setBirth] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(newUsername, password, email, birth);
-        props.onRegistrated(newUsername)
+        props.onRegistered(newUsername)
     }
 
     return(
@@ -48,8 +49,8 @@ export function RegistrationView (props) {
                                     <Form.Group style = {{marginTop: '10px'}}>
                                         <Form.Control
                                             type = "password"
-                                            value = {password}
-                                            onChange = {e => setPassword (e.target.value)}
+                                            value = {password2}
+                                            onChange = {e => setPassword2 (e.target.value)}
                                             required
                                             minLength = "8"
                                             placeholder = "Repeat your passoword"
@@ -73,6 +74,8 @@ export function RegistrationView (props) {
                                         />
                                     </Form.Group>
                                     <Button style = {{marginTop: '10px'}} variant = "primary" type = "submit" onClick = {handleSubmit}> Register now</Button>
+                                    <a href = "" onClick = {props.onRegistration}> Already registered ?</a>
+                                
                                 </Form>
                             
                             </Card.Body>

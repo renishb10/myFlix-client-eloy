@@ -21,7 +21,7 @@ export class MainView extends React.Component {
             movies: [],
             selectedMovie: null,
             user: null,
-            newUser: null
+            register: null
         };
     }
 
@@ -45,12 +45,21 @@ export class MainView extends React.Component {
 
     onLoggedIn(user){
         this.setState({
-            user
+            user,
+            register: user
         });
     }
-    onRegistrated(user){
+    onRegistered(register){
         this.setState({
-            user
+            register,
+            user: register
+        });
+    }
+    toggleRegisterView(e){
+        e.preventDefault();
+        this.setState({
+            registered: !this.state.registered,
+            user: !this.state.user
         });
     }
 
@@ -61,11 +70,14 @@ export class MainView extends React.Component {
     }*/
 
     render() {
-        const {movies, selectedMovie, user, newUser} = this.state;
+        const {movies, selectedMovie, user, register} = this.state;
      
+        console.log (register,user)
         //If there is no user we return the log in view
-        if(!user) return <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>;
+        if(!user) return <LoginView onLoggedIn = {user => this.onLoggedIn(user)} onRegistration = {(e) => this.toggleRegisterView(e)}/>;
         // if(!user) return <RegistrationView onRegistration = {user => this.onRegistrated(user)}/>;
+
+        if(!register) return <RegistrationView onRegistered = {user => this.onRegistered(user)} onRegistration = {(e => this.toggleRegisterView(e))}/>
 
        /*//If newUser == 1 
         if(newUser) return <RegistrationView onRegistration = {user => this.onRegistrated(user)} />
