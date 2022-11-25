@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 export class MovieView extends React.Component {
@@ -38,11 +40,17 @@ export class MovieView extends React.Component {
                         </div>
                         <div className = "movie-genre">
                             <span className = "label"> Genre: </span>
-                            <span className = "value">{movieData.Genre.Name} </span>
+                            <Link to = {`/genres/${movie.Genre.Name}`}>
+                                <span className = "value">{movieData.Genre.Name} </span>
+                                <Button variant = "link"> See more</Button>
+                            </Link>
                         </div>
                         <div className = "movie-director">
                             <span className = "label"> Director: </span>
-                            <span className = "value">{movieData.Director.Name} </span>
+                            <Link to ={`/directors/${movie.Director.Name}`}>
+                                <span className = "value">{movieData.Director.Name} </span>
+                                <Button variant = "link">See more</Button>
+                            </Link>
                         </div>
                         
                         <Button onClick = {() =>{ onBackClick(null); }}> Back to movies </Button>

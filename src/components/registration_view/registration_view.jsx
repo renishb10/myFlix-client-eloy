@@ -1,19 +1,71 @@
 import React, {useState} from 'react';
+import propTypes from 'prop-types';
+import axios from 'axios';
+import './registration_view.scss';
 
 import {Container, Form, Card, CardGroup, Row, Col, Button} from 'react-bootstrap';
 
 export function RegistrationView (props) {
-    
     const [newUsername, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState ('');
     const [email, setEmail] = useState('');
     const [birth, setBirth] = useState('');
 
+    //Declaring the hooks for the autentification
+    const[newNewUsernameErr, setNewUsernameErr] = useState('');
+    const[passwordErr, setPasswordErr] = useState('');
+    const[password2Err, setPassword2Err] = useState('');
+    const[emailErr, setEmailErr] = useState('');
+
+    const validate = () =>{
+        let isReq = true;
+        if(!newUsername){
+            setNewUsernameErr('Username is required');
+            isReq = false;
+        }else if(newUsername.length < 2){
+            setNewUsernameErr('Username must be, at least, 2 characters long');
+            isReq = false;
+        }if(!password){
+            setPasswordErr('Password is required');
+            isReq = false;
+        }else if(password.length < 6){
+            setPasswordErr('Password must be 6 characters long');
+        }if(password2 !== password){
+            setPassword2Err('Passwords must match');
+        }if(email.indexOf('@') === -1){
+            setEmailErr('The emails does not look like an email');
+        }
+        return isReq;
+    }
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(newUsername, password, email, birth);
-        props.onRegistered(newUsername)
+        const isReq = validate();
+        if(isReq){
+            // console.log(newUsername, password, email, birth);
+            axios.post('https://new-super-flix.herokuapp.com/users',{
+                username: newUsername,
+                password: password,
+                email: email,
+                birthday: birth
+            })
+            .then(response =>{
+                const data = response.data;
+                console.log(data);
+                props.onRegistered(data);
+                alert('Registration successful, please login!');
+                window.open('/','_self');
+            })
+            .catch(e =>{
+                console.error('Something has gone wrong');
+                alert('Unable to register');
+            });
+
+            props.onRegistered(newUsername)
+        }
     }
 
     return(
@@ -34,6 +86,7 @@ export function RegistrationView (props) {
                                             required
                                             placeholder = "Enter a username here"
                                             />
+                                            {newNewUsernameErr && <p>{newUsernameErr}</p>}
                                     </Form.Group>
                                     <Form.Group style = {{marginTop: '10px'}}>
                                         Password:
@@ -45,6 +98,7 @@ export function RegistrationView (props) {
                                             minLength = "8"
                                             placeholder = "Enter your passoword"
                                         />
+                                        {passwordErr && <p>{passwordErr}</p>}
                                     </Form.Group>
                                     <Form.Group style = {{marginTop: '10px'}}>
                                         <Form.Control
@@ -55,6 +109,7 @@ export function RegistrationView (props) {
                                             minLength = "8"
                                             placeholder = "Repeat your passoword"
                                         />
+                                        {password2Err && <p>{password2Err}</p>}
                                     </Form.Group>
                                     <Form.Group style = {{marginTop: '10px'}}>
                                         <Form.Label>Email: </Form.Label>
@@ -64,6 +119,7 @@ export function RegistrationView (props) {
                                             onChange = {e => setEmail (e.target.value)} 
                                             required
                                         />
+                                        {emailErr && <p>{emailErr}</p>}
                                     </Form.Group>
                                     <Form.Group style = {{marginTop: '10px'}}>
                                         <Form.Label>Birth Date</Form.Label>
@@ -87,3 +143,11 @@ export function RegistrationView (props) {
         
     );
 }
+
+RegistrationView.propTypes = {
+    register: propTypes.shape({
+        username: propTypes.string.isRequired,
+        password: propTypes.string.isRequired,
+        email: propTypes.string.isRequired
+    }),
+};
