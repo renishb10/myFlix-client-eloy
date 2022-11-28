@@ -58,6 +58,10 @@ export function LoginView (props){
             });
         }
     };
+
+    onRegistration = (e) => {
+        props.onRegistration(e)
+    }
     
 
     /*onRegistrated(username){
