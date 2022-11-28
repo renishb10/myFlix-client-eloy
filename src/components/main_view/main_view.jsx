@@ -62,7 +62,7 @@ export class MainView extends React.Component {
 
     //This function will be deprecated with the client side routing
     onRegistered(authData){
-        // console.log(authData);
+        console.log(authData);
         this.setState({
             register: authData.username,
             user: authData.username,
@@ -106,7 +106,7 @@ export class MainView extends React.Component {
                         <Route exact path = "/" render = {() =>{
                             //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passsed as a prop to the loginView
                             if(!user) return <Col>
-                                <LoginView movies = {movies} onLoggedin = {user => this.onLoggedIn(user)}/>
+                                <LoginView movies = {movies} onLoggedIn = {user => this.onLoggedIn(user)}/>
                             </Col>
                             //Before the movies have been loaded
                             if(movies.length === 0) return <div className = "main-view" />;

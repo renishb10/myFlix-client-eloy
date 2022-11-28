@@ -52,9 +52,11 @@ export function LoginView (props){
             })
             .then(response =>{
                 const data = response.data;
+                console.log(props);
                 props.onLoggedIn(data);    
             }).catch(e =>{
                 console.log('no such user');
+                console.log(e);
             });
         }
     };

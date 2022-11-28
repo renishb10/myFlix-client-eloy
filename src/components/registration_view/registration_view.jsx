@@ -55,16 +55,16 @@ export function RegistrationView (props) {
             .then(response =>{
                 const data = response.data;
                 console.log(data);
-                props.onRegistered(data);
+                console.log(props)
+                // props.onRegistered(data);
                 alert('Registration successful, please login!');
                 window.open('/','_self');
             })
             .catch(e =>{
+                console.log(e);
                 console.error('Something has gone wrong');
                 alert('Unable to register');
             });
-
-            props.onRegistered(newUsername)
         }
     }
 
