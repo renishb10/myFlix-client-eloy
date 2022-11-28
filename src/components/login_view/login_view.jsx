@@ -4,13 +4,7 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 import './login_view.scss';
 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import {Form, Button, CardGroup, Card, Container, Col, Row} from 'react-bootstrap';
 
 export function LoginView (props){
     const [username, setUsername] = useState ('');
@@ -77,7 +71,7 @@ export function LoginView (props){
             <Row>
                 <Col>
                     <CardGroup>
-                        <Card style ={{marginTop: 100, marginBottom: 50, width: '300px'}}>
+                        <Card style ={{marginTop: 100, marginBottom: 50}}>
                             <Card.Body>
                                 <Card.Title style ={{textAlign: 'center', fontSize: '2rem'}}>Login</Card.Title>
                                 <Form className = 'login-border'>

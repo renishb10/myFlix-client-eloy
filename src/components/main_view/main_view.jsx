@@ -19,7 +19,6 @@ import './main_view.scss';
 import { Container, Row, Col, Button} from 'react-bootstrap';
 
 
-
 export class MainView extends React.Component {
     constructor(){
         super();
@@ -79,6 +78,7 @@ export class MainView extends React.Component {
     }
 
     getMovies(token) {
+       
         axios.get('https://new-super-flix.herokuapp.com/movies', {
             headers: {Authorization: `Bearer ${token}`}
         })
@@ -123,20 +123,29 @@ export class MainView extends React.Component {
                             </Col>
                         }}/>
                        <Route path = "/movies/:movieId" render = {({match, history}) =>{
-                          return <Col  md = {8}>
+                            if(!user) return <Redirect to ="/"/>
+                            return <Col  md = {8}>
                                 {/* console.log(movies); */}
                                <MovieView movieData = {movies.find(movie => movie._id === match.params.movieId)} onBackClick ={() => history.goBack()}/>
                           </Col>
                         }}/>
-                        <Route path ="/movie-director/:movieId" render = {({match, history}) =>{
+                        <Route path ="/directors/:name" render = {({match, history}) =>{
+                            if(!user) return <Redirect to ="/"/>
                             return <Col>
-                                <DirectorView movieData = {movies.find(movie => movieData._id === match.params.movieId)} onBackClick ={() => history.goBack()}/>
+                                <DirectorView director = {movies.find(movie => movie.Director.Name === match.params.name).Director} onBackClick ={() => history.goBack()}/>
                             </Col>
                         }}/>
+                        <Route path ="/genres/:name" render = {({match, history}) =>{
+                            if(!user) return <Redirect to ="/"/>
+                            return <Col>
+                                <GenreView genre = {movies.find(movie => movie.Genre.Name === match.params.name).Genre} onBackClick ={() => history.goBack()}/>
+                            </Col>
+                        }}/>
+
                         <Route path = {`/users/${user}`} render = {({match, history}) =>{
                             if(!user) return <Redirect to = "/"/>
                             return <Col>
-                                <ProfileView movies = {movies} user = {user} onBackClick = {() => history.goBack()}/>
+                                <ProfileView movieData = {movies} user = {user} onBackClick = {() => history.goBack()}/>
                             </Col>
                         }}/>
                         <Route path = {`/user-update/${user}`} render = {({match, history}) =>{
@@ -147,8 +156,6 @@ export class MainView extends React.Component {
                         }}
                         />
 
-
-                         
                     </Row>
                 </Container>
             </Router>        
