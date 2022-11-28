@@ -25560,7 +25560,7 @@ class MainView extends _reactDefault.default.Component {
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                                 path: "/register",
                                 render: ()=>{
-                                    if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(Redirect, {
+                                    if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
                                         to: "/"
                                     }));
                                     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
@@ -25582,7 +25582,7 @@ class MainView extends _reactDefault.default.Component {
                                     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                                         md: 8,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                                            movieData: movies.find((movieData)=>movieData._id === match.params.movieId
+                                            movieData: movies.find((movie)=>movie._id === match.params.movieId
                                             ),
                                             onBackClick: ()=>history.goBack()
                                         })
@@ -25599,7 +25599,7 @@ class MainView extends _reactDefault.default.Component {
                                 render: ({ match , history  })=>{
                                     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_directorView.DirectorView, {
-                                            movieData: movies.find((movieData)=>movieData._id === match.params.movieId
+                                            movieData: movies.find((movie)=>movieData._id === match.params.movieId
                                             ),
                                             onBackClick: ()=>history.goBack()
                                         })
@@ -25607,14 +25607,14 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main_view/main_view.jsx",
-                                    lineNumber: 130
+                                    lineNumber: 131
                                 },
                                 __self: this
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                                 path: `/users/${user}`,
                                 render: ({ match , history  })=>{
-                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(Redirect, {
+                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
                                         to: "/"
                                     }));
                                     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
@@ -25627,14 +25627,14 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main_view/main_view.jsx",
-                                    lineNumber: 135
+                                    lineNumber: 136
                                 },
                                 __self: this
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                                 path: `/user-update/${user}`,
                                 render: ({ match , history  })=>{
-                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(Redirect, {
+                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
                                         to: "/"
                                     }));
                                     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
@@ -25646,7 +25646,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main_view/main_view.jsx",
-                                    lineNumber: 141
+                                    lineNumber: 142
                                 },
                                 __self: this
                             })
@@ -29331,15 +29331,14 @@ class MovieView extends _reactDefault.default.Component {
     // componentDidMount()
     //componentWillUnmount()
     // Dont have any funtion more than educational purposes (they will add an event listener and remove it when the movie view is activated and closed respectively)
-    keypressCallback(event) {
-        console.log(event.key);
-    }
-    componentDidMount() {
-        document.addEventListener('keypress', this.keypressCallback);
-    }
-    componentWillUnmount() {
-        document.removeEventListener('keypress', this.keypressCallback);
-    }
+    // keypressCallback(event) {
+    //     console.log(event.key);
+    // }
+    // componentDidMount(){
+    //     document.addEventListener('keypress', this.keypressCallback);
+    // }
+    // componentWillUnmount(){
+    //     document.removeEventListener('keypress', this.keypressCallback);    }
     render() {
         const { movieData , onBackClick  } = this.props;
         console.log(movieData);
@@ -29459,36 +29458,25 @@ class MovieView extends _reactDefault.default.Component {
                                     __self: this,
                                     children: " Genre: "
                                 }),
-                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Link, {
-                                    to: `/genres/${movie.Genre.Name}`,
+                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                    to: `/genres/${movieData.Genre.Name}`,
                                     __source: {
                                         fileName: "src/components/movie_view/movie_view.jsx",
                                         lineNumber: 44
                                     },
                                     __self: this,
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
-                                            className: "value",
-                                            __source: {
-                                                fileName: "src/components/movie_view/movie_view.jsx",
-                                                lineNumber: 45
-                                            },
-                                            __self: this,
-                                            children: [
-                                                movieData.Genre.Name,
-                                                " "
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                            variant: "link",
-                                            __source: {
-                                                fileName: "src/components/movie_view/movie_view.jsx",
-                                                lineNumber: 46
-                                            },
-                                            __self: this,
-                                            children: " See more"
-                                        })
-                                    ]
+                                    children: /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                        className: "value",
+                                        __source: {
+                                            fileName: "src/components/movie_view/movie_view.jsx",
+                                            lineNumber: 45
+                                        },
+                                        __self: this,
+                                        children: [
+                                            movieData.Genre.Name,
+                                            " "
+                                        ]
+                                    })
                                 })
                             ]
                         }),
@@ -29509,36 +29497,25 @@ class MovieView extends _reactDefault.default.Component {
                                     __self: this,
                                     children: " Director: "
                                 }),
-                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Link, {
-                                    to: `/directors/${movie.Director.Name}`,
+                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                    to: `/directors/${movieData.Director.Name}`,
                                     __source: {
                                         fileName: "src/components/movie_view/movie_view.jsx",
                                         lineNumber: 51
                                     },
                                     __self: this,
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
-                                            className: "value",
-                                            __source: {
-                                                fileName: "src/components/movie_view/movie_view.jsx",
-                                                lineNumber: 52
-                                            },
-                                            __self: this,
-                                            children: [
-                                                movieData.Director.Name,
-                                                " "
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                            variant: "link",
-                                            __source: {
-                                                fileName: "src/components/movie_view/movie_view.jsx",
-                                                lineNumber: 53
-                                            },
-                                            __self: this,
-                                            children: "See more"
-                                        })
-                                    ]
+                                    children: /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                        className: "value",
+                                        __source: {
+                                            fileName: "src/components/movie_view/movie_view.jsx",
+                                            lineNumber: 52
+                                        },
+                                        __self: this,
+                                        children: [
+                                            movieData.Director.Name,
+                                            " "
+                                        ]
+                                    })
                                 })
                             ]
                         }),

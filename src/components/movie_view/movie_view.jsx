@@ -11,15 +11,15 @@ export class MovieView extends React.Component {
     // componentDidMount()
     //componentWillUnmount()
     // Dont have any funtion more than educational purposes (they will add an event listener and remove it when the movie view is activated and closed respectively)
-    keypressCallback(event) {
-        console.log(event.key);
-    }
+    // keypressCallback(event) {
+    //     console.log(event.key);
+    // }
 
-    componentDidMount(){
-        document.addEventListener('keypress', this.keypressCallback);
-    }
-    componentWillUnmount(){
-        document.removeEventListener('keypress', this.keypressCallback);    }
+    // componentDidMount(){
+    //     document.addEventListener('keypress', this.keypressCallback);
+    // }
+    // componentWillUnmount(){
+    //     document.removeEventListener('keypress', this.keypressCallback);    }
 
     render(){
         const { movieData, onBackClick } = this.props;
@@ -41,16 +41,16 @@ export class MovieView extends React.Component {
                         </div>
                         <div className = "movie-genre">
                             <span className = "label"> Genre: </span>
-                            <Link to = {`/genres/${movie.Genre.Name}`}>
+                            <Link to = {`/genres/${movieData.Genre.Name}`}>
                                 <span className = "value">{movieData.Genre.Name} </span>
-                                <Button variant = "link"> See more</Button>
+                                {/* <Button variant = "link"> See more</Button> */}
                             </Link>
                         </div>
                         <div className = "movie-director">
                             <span className = "label"> Director: </span>
-                            <Link to ={`/directors/${movie.Director.Name}`}>
+                            <Link to ={`/directors/${movieData.Director.Name}`}>
                                 <span className = "value">{movieData.Director.Name} </span>
-                                <Button variant = "link">See more</Button>
+                                {/* <Button variant = "link">See more</Button> */}
                             </Link>
                         </div>
                         

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 import { Navbar } from '../navbar/navbar';
 import { LoginView } from '../login_view/login_view';
@@ -124,12 +124,13 @@ export class MainView extends React.Component {
                         }}/>
                        <Route path = "/movies/:movieId" render = {({match, history}) =>{
                           return <Col  md = {8}>
-                               <MovieView movieData = {movies.find(movieData => movieData._id === match.params.movieId)} onBackClick ={() => history.goBack()}/>
+                                {/* console.log(movies); */}
+                               <MovieView movieData = {movies.find(movie => movie._id === match.params.movieId)} onBackClick ={() => history.goBack()}/>
                           </Col>
                         }}/>
                         <Route path ="/movie-director/:movieId" render = {({match, history}) =>{
                             return <Col>
-                                <DirectorView movieData = {movies.find(movieData => movieData._id === match.params.movieId)} onBackClick ={() => history.goBack()}/>
+                                <DirectorView movieData = {movies.find(movie => movieData._id === match.params.movieId)} onBackClick ={() => history.goBack()}/>
                             </Col>
                         }}/>
                         <Route path = {`/users/${user}`} render = {({match, history}) =>{
