@@ -3,6 +3,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {Container, Row, Col, Button} from 'react-bootstrap';
+import axios from 'axios';
 
 export class MovieView extends React.Component {
 
@@ -18,8 +19,26 @@ export class MovieView extends React.Component {
     // componentDidMount(){
     //     document.addEventListener('keypress', this.keypressCallback);
     // }
+
     // componentWillUnmount(){
     //     document.removeEventListener('keypress', this.keypressCallback);    }
+
+    addToFavs(id){
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        // console.log(`https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`);
+        
+        axios.post(`https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`,{
+            headers: {Authorization: `Bearer ${token}`}
+        })
+        .then(response =>{
+            alert(response);
+            // window.open("reload()","_self");
+
+        }).catch(function(e){
+            console.log(e);
+        })
+    }
 
     render(){
         const { movieData, onBackClick } = this.props;
@@ -53,8 +72,8 @@ export class MovieView extends React.Component {
                                 {/* <Button variant = "link">See more</Button> */}
                             </Link>
                         </div>
-                        
-                        <Button onClick = {() =>{ onBackClick(null); }}> Back to movies </Button>
+                        <Button className = "add-to-favorites" variant = "secondary" onClick ={() =>{this.addToFavs(movieData._id)}}>Add to Favorites</Button>
+                        <Button style = {{marginLeft: "10px"}} onClick = {() =>{ onBackClick(null); }}> Back to movies </Button>
                             
                     </Col>
                 </Row>
