@@ -26,17 +26,15 @@ export class MovieView extends React.Component {
     addToFavs(id){
         const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        // console.log(`https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`);
-        
-        axios.post(`https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`,{
-            headers: {Authorization: `Bearer ${token}`}
-        })
-        .then(response =>{
-            alert(response);
-            // window.open("reload()","_self");
+        const url = `https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`
 
+        axios.post(url, {}, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(response => {
+            window.open("reload()","_self");
         }).catch(function(e){
-            console.log(e);
+            console.log({error: e});
         })
     }
 

@@ -29,13 +29,9 @@ export class  ProfileView extends React.Component{
         this.getUser();
     }
 
-    getConfirmation() {
-        return confirm("Your user values are going to be updated. Continue?");
-    };
-
     getConfirmation(message) {
         var retVal = confirm(message);
-        if( retVal == true ) {
+        if( retVal === true ) {
            return true;
         } else {
            return false;
@@ -132,13 +128,15 @@ export class  ProfileView extends React.Component{
     }
 
     deleteUser(){
-        if(this.getConfirmation("Are you sure you want to delete all your data?")){
-            user = LocalStorage('user');
+        const conf = confirm("Are you sure you want to delete all your data?");
+        if(conf){
+            const user = localStorage.getItem('user');
+            const token = localStorage.getItem('token');
             axios.delete(`https://new-super-flix.herokuapp.com/users/${user}`,{
-            headers: {Authorization: `Bearer ${token}`}
-            }).then(response =>{
+                headers: {Authorization: `Bearer ${token}`}
+                }).then(response =>{
                 alert("your data has been succesfully removed");
-                LocalStorage.clear();
+                localStorage.clear();
                 window.open("/","_self");
 
             }).catch(function(e) {
@@ -155,8 +153,7 @@ export class  ProfileView extends React.Component{
         const token = localStorage.getItem("token");
     axios.delete(`https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
-      )
-      .then((response) => {
+      ).then((response) => {
         alert("Movie has been removed from favorites.");
         this.componentDidMount();
       })
@@ -280,7 +277,9 @@ export class  ProfileView extends React.Component{
                             </CardGroup>
                         </Col>
                     </Row>
-                    <h2 style ={{marginTop: "20px", marginBottom: "5px"}}>List of your favorite Movies: </h2>
+                    <Row>
+                        <h3 style ={{marginTop: "20px", marginBottom: "5px"}}>List of your favorite Movies: </h3>
+                    </Row>
                     <Row className = "favorite-movies-list">
                         {favMoviesList.map(movie => (
                             <Col key = {movie.id} md = {3}>
