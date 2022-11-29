@@ -11,7 +11,7 @@ import { MovieView } from '../movie_view/movie_view';
 import { DirectorView } from '../director_view/director_view';
 import { GenreView } from '../genre_view/genre_view';
 import { ProfileView } from '../profile_view/profile_view';
-import { UserUpdate } from '../profile_view/user_update';
+import { FavoriteMovies } from '../profile_view/FavoriteMovies';
 import './main_view.scss';
 
 
