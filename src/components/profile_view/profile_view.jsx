@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
 import './profile_view.scss'
+import UserInfo from './user_info';
+import ProfileUpdate from './profile_update';
 
 import { MovieCard } from '../movie_card/movie_card';
 
@@ -39,40 +41,79 @@ export class  ProfileView extends React.Component{
      }
 
      validate(){
+        // console.log(this.state.newPassword);
+        // console.log(this.state.newPassword2);
+
         if(this.state.newPassword === this.state.newPassword2 && this.state.newPassword !== (null || undefined)){
-            this.setPassword(this.state.newPassword);
-        }
+            this.setState({
+                password: this.state.newPassword
+            })
+        };
+        if(this.state.newUsername && this.state.newUsername !== localStorage.getItem('user')){
+            this.setState({
+                username: this.state.newUsername
+            })
+        };
         //We can implement here further validation protocols
+        return true;
      };
 
     handleSubmit = (e) => {
         e.preventDefault();
         const isReq = this.validate();
-        if(isReq && this.getConfirmation("Your user values are going to be updated. Continue?")){
-            const user = localStorage.getItem('user');
-            const token = localStorage.getItem('token');
-            axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
-                username: this.state.newUsername,
-                password: this.state.newPassword,
-                email: this.state.email,
-                birthday: this.state.birth
-            }, {
-            headers: {Authorization: `Bearer ${token}`}
-            })
-            .then(response => {
-                // console.log(response.data);
-                localStorage.setItem("user", this.state.username);
-                window.open(`/users/${localStorage.getItem('user')}`, "_self");
-                alert("Your user information has been updated");
-            })
-            .catch(function (e){
-                console.log(e);
-            });
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        const userConfirm = confirm("Your user values are going to be updated. Continue?");
+
+        if(isReq && userConfirm){
+            // console.log(userConfirm);
+            // console.log("blablabla");
+            console.log(this.state.username);
+            console.log(this.state.password);
+            console.log(this.state.email);
+            console.log(this.state.birth);
+            if(this.state.birth){
+                axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
+                    username: this.state.newUsername,
+                    password: this.state.newPassword,
+                    email: this.state.email,
+                    birthday: this.state.birth
+                }, {
+                    headers: {Authorization: `Bearer ${token}`}
+                })
+                .then(response => {
+                    console.log(response.data);
+                    localStorage.setItem("user", this.state.username);
+                    window.open(`/users/${localStorage.getItem('user')}`, "_self");
+                    alert("Your user information has been updated");
+                })
+                .catch(function (e){
+                    console.log(e);
+                });
+            }else{
+                axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
+                    username: this.state.newUsername,
+                    password: this.state.newPassword,
+                    email: this.state.email,
+                }, {
+                    headers: {Authorization: `Bearer ${token}`}
+                })
+                .then(response => {
+                    console.log(response.data);
+                    localStorage.setItem("user", this.state.username);
+                    window.open(`/users/${localStorage.getItem('user')}`, "_self");
+                    alert("Your user information has been updated");
+                })
+                .catch(function (e){
+                    console.log(e);
+                });
+            }
         } else {
             console.log('User has decline changes');
             window.open(`/users/${user}`,"_self");
         }
     };
+
 
 
     setUsername(value){
@@ -210,18 +251,25 @@ export class  ProfileView extends React.Component{
                   favMoviesList.push(movie);
                 }
             })
-            console.log(favMoviesList);
+            // console.log(favMoviesList);
         }
 
 
             return(
                 <Container>
+                    
                     <Row className = "user-profile-info">
-                        <Col>
+                        <Col xs = {12} sm ={4} >
+                            <Card style = {{ marginTop: 100, padding: "10px"}}>
+                                <UserInfo name = {this.state.username} email = {this.state.email}/>
+                            </Card>
+                        </Col>
+                        <Col xs = {12} sm = {8}>
+
                             <CardGroup>
-                                <Card style = {{marginTop: 100, marginBottom: 50, width: '100px'}}>
+                                <Card style = {{marginTop: 100, marginBottom: 50}}>
                                     <Card.Body>
-                                        <Card.Title style ={{textAlign: 'center', fontSize: '2rem'}}>User information: </Card.Title>
+                                        <Card.Title style ={{textAlign: 'center', fontSize: '2rem'}}>User update: </Card.Title>
                                         <Form>
                                             <Form.Group>
                                                 <Form.Label> Username: </Form.Label>
@@ -229,6 +277,7 @@ export class  ProfileView extends React.Component{
                                                     defaultValue = {username}
                                                     type = "text"
                                                     onChange={(e) => this.setUsername(e.target.value)}
+                                                    required
                                                 />
                                             </Form.Group>
                                             <Form.Group style = {{marginTop: '10px'}}>
@@ -236,6 +285,7 @@ export class  ProfileView extends React.Component{
                                                 <Form.Control
                                                 type = "password"
                                                 onChange={(e) => this.setPassword(e.target.value)}
+                                                required
                                                 />
                                             </Form.Group>
                                             <Form.Group style = {{marginTop: '10px'}}>
@@ -243,6 +293,7 @@ export class  ProfileView extends React.Component{
                                                 <Form.Control
                                                 type = "password"
                                                 onChange={(e) => this.setNewPassword(e.target.value)}
+                                                required
                                                 />
                                             </Form.Group>
                                             <Form.Group style = {{marginTop: '10px'}}>
@@ -250,6 +301,7 @@ export class  ProfileView extends React.Component{
                                                 <Form.Control
                                                 type = "password"
                                                 onChange={(e) => this.setNewPassword2(e.target.value)}
+                                                required
                                                 />
                                             </Form.Group>
                                             <Form.Group style = {{marginTop: '10px'}}>
@@ -258,6 +310,7 @@ export class  ProfileView extends React.Component{
                                                     defaultValue = {email}
                                                     type = "text"
                                                     onChange = {(e) => this.setEmail(e.target.value)}
+                                                    required
                                                 />
                                             </Form.Group>
                                             <Form.Group style = {{marginTop: '10px'}}>
@@ -277,7 +330,7 @@ export class  ProfileView extends React.Component{
                             </CardGroup>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className = "favorite-movies-title">
                         <h3 style ={{marginTop: "20px", marginBottom: "5px"}}>List of your favorite Movies: </h3>
                     </Row>
                     <Row className = "favorite-movies-list">

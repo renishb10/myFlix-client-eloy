@@ -32,6 +32,7 @@ export class MovieView extends React.Component {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then(response => {
+            alert("Movie has been added to favorites");
             window.open("reload()","_self");
         }).catch(function(e){
             console.log({error: e});
@@ -46,7 +47,9 @@ export class MovieView extends React.Component {
                 <Row>
                     <Col>
                         <div className = "movie-poster">
-                            <img src = {movieData.imagePath} />
+                            console.log(movieData)
+                            console.log(movieData.Title)
+                            <img crossOrigin="anonymous" src = {movieData.imagePath} />
                         </div>
                         <div className = "movie-title">
                             <span className = "label"> Title: </span>

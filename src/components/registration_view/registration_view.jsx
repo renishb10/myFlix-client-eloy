@@ -72,6 +72,10 @@ export function RegistrationView (props) {
         <Container>
             <Row>
                 <Col>
+                    <div>
+                        <p>Name: this.state.username</p>
+                        <p>e-mail: this.state.username</p>
+                    </div>
                     <CardGroup>
                         <Card style = {{marginTop: 100, marginBottom: 50, width: '100px'}}>
                             <Card.Body>
