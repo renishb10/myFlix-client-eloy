@@ -69,12 +69,12 @@ export class  ProfileView extends React.Component{
             // console.log(userConfirm);
             // console.log("blablabla");
             console.log(this.state.username);
-            console.log(this.state.password);
+            console.log(this.state.newPassword);
             console.log(this.state.email);
             console.log(this.state.birth);
             if(this.state.birth){
                 axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
-                    username: this.state.newUsername,
+                    username: this.state.username,
                     password: this.state.newPassword,
                     email: this.state.email,
                     birthday: this.state.birth
@@ -83,9 +83,9 @@ export class  ProfileView extends React.Component{
                 })
                 .then(response => {
                     console.log(response.data);
-                    localStorage.setItem("user", this.state.username);
-                    window.open(`/users/${localStorage.getItem('user')}`, "_self");
-                    alert("Your user information has been updated");
+                    // localStorage.setItem("user", this.state.username);
+                    // window.open(`/users/${localStorage.getItem('user')}`, "_self");
+                    // alert("Your user information has been updated");
                 })
                 .catch(function (e){
                     console.log(e);
@@ -140,13 +140,13 @@ export class  ProfileView extends React.Component{
 
     setPassword(value){
         this.setState({
-            password:value,
+            password: value,
         })
     }
 
     setNewPassword(value){
         this.setState({
-            newPassword:value,
+            newPassword: value,
         })
     }
 
