@@ -46,7 +46,9 @@ export function RegistrationView (props) {
         const isReq = validate();
         if(isReq){
             // console.log(newUsername, password, email, birth);
-            axios.post('https://new-super-flix.herokuapp.com/users',{
+            // axios.post('https://new-super-flix.herokuapp.com/users',{
+            axios.post('https://localhost:8080/users',{
+
                 username: newUsername,
                 password: password,
                 email: email,

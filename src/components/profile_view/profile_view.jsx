@@ -73,7 +73,8 @@ export class  ProfileView extends React.Component{
             console.log(this.state.email);
             console.log(this.state.birth);
             if(this.state.birth){
-                axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
+                // axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
+                axios.put(`https://localhost:8080/users/${user}`,{
                     username: this.state.username,
                     password: this.state.newPassword,
                     email: this.state.email,
@@ -91,7 +92,9 @@ export class  ProfileView extends React.Component{
                     console.log(e);
                 });
             }else{
-                axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
+                // axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
+                axios.put(`https://localhost:8080/users/${user}`,{
+
                     username: this.state.newUsername,
                     password: this.state.newPassword,
                     email: this.state.email,
@@ -124,7 +127,8 @@ export class  ProfileView extends React.Component{
 
     getMovies(token) {
        
-        axios.get('https://new-super-flix.herokuapp.com/movies', {
+        // axios.get('https://new-super-flix.herokuapp.com/movies', {
+        axios.get('https://localhost:8080/movies', {
             headers: {Authorization: `Bearer ${token}`}
         })
         .then(response =>{
@@ -173,7 +177,9 @@ export class  ProfileView extends React.Component{
         if(conf){
             const user = localStorage.getItem('user');
             const token = localStorage.getItem('token');
-            axios.delete(`https://new-super-flix.herokuapp.com/users/${user}`,{
+            // axios.delete(`https://new-super-flix.herokuapp.com/users/${user}`,{
+            axios.delete(`https://localhost:8080/users/${user}`,{
+            
                 headers: {Authorization: `Bearer ${token}`}
                 }).then(response =>{
                 alert("your data has been succesfully removed");
@@ -192,7 +198,8 @@ export class  ProfileView extends React.Component{
     RemoveFavorite(id){
         const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
-    axios.delete(`https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`,
+    // axios.delete(`https://new-super-flix.herokuapp.com/users/${user}/movies/${id}`,
+    axios.delete(`https://localhost:8080/users/${user}/movies/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       ).then((response) => {
         alert("Movie has been removed from favorites.");
@@ -208,7 +215,8 @@ export class  ProfileView extends React.Component{
     getUser(){
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
-        axios.get(`https://new-super-flix.herokuapp.com/users/${username}`, {
+        // axios.get(`https://new-super-flix.herokuapp.com/users/${username}`, {
+        axios.get(`https://localhost:8080/users/${username}`, {    
             headers: {Authorization: `Bearer ${token}`}
         })
         .then(response =>{

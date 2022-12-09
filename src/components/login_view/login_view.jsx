@@ -40,7 +40,8 @@ export function LoginView (props){
         if (isReq){
             // console.log(username, password);
             // Send a request to the server for authentification
-            axios.post('https://new-super-flix.herokuapp.com/login',{
+            // axios.post('https://new-super-flix.herokuapp.com/login',{
+            axios.post('https://localhost:8080/login',{      
                 username: username,
                 password: password
             })
