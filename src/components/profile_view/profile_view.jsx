@@ -74,7 +74,7 @@ export class  ProfileView extends React.Component{
             console.log(this.state.birth);
             if(this.state.birth){
                 // axios.put(`https://new-super-flix.herokuapp.com/users/${user}`,{
-                axios.put(`https://localhost:8080/users/${user}`,{
+                axios.put(`http://localhost:8080/users/${user}`,{
                     username: this.state.username,
                     password: this.state.newPassword,
                     email: this.state.email,
