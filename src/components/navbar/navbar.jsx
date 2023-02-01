@@ -3,7 +3,7 @@ import './navbar.scss';
 
 import {Container, Nav, Navbar, Button} from 'react-bootstrap';
 
-export function Navbar ({user}) {
+export function Navigationbar ({user}) {
     
     const onLoggedOut = () => {
         window.localStorage.clear();

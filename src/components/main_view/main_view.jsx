@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
-import { Navbar } from '../navbar/navbar';
+import { Navigationbar } from '../navbar/navbar';
 import { LoginView } from '../login_view/login_view';
 import { RegistrationView } from '../registration_view/registration_view';
 import { MovieCard } from '../movie_card/movie_card';
@@ -101,7 +101,7 @@ export class MainView extends React.Component {
         
         return (
             <Router>
-                <Navbar user = {user}/>
+                <Navigationbar user = {user}/>
                 <Container> 
                     <Row className = "main-view justify-content-md-center">
                         <Route exact path = "/" render = {() =>{
