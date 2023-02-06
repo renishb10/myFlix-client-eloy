@@ -1,5 +1,6 @@
 
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import './login_view.scss';
@@ -100,8 +101,10 @@ export function LoginView (props){
                                         {passwordErr && <p>{passwordErr}</p>}
                                     </Form.Group>
                                     <Button style ={{marginTop: '10px'}} variant = "primary" type = "submit" onClick = {handleSubmit}> Submit </Button>
-                                    
-                                    <a href = "" onClick = {onRegistration}> Not registered yet?</a>
+
+                                    <Link to = {`/register`}>
+                                        <span className = "value">Not registered yet??</span>
+                                    </Link>
                                 </Form>
                             </Card.Body>
                         </Card>
